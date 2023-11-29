@@ -7,8 +7,8 @@ class Circle:
         self.__radius = radius
 
     def __repr__(self):
-        return "Center: " + "("+str(self.__center[0])+","+str(self.__center[1])+")"\
-        +"\t radius: "+ str(self.__radius)
+        return "center: " + "("+str(self.__center[0])+", "+str(self.__center[1])+")"\
+        +" radius: "+ str(self.__radius)\
     
     def __lt__(self, other):
         if type(self) == type(other):
