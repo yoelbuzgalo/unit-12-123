@@ -24,6 +24,14 @@ def total(node, total_counted=0):
         node = node.get_next()
     return total
 
+# Activity 12.7, Visualizing Stack Operations:
+# [5]
+# [5,8]
+# [5]
+# [5,3]
+# [5]
+# [5,1]
+
 def main():
     seq = Node(3, Node(2, Node(1)))
     print(length(seq))
