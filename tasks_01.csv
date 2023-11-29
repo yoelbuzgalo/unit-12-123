@@ -1,0 +1,39 @@
+Name,Location
+Align Engine Output,Upper Engine
+Align Engine Output,Lower Engine
+Calibrate Distributor,Electrical
+Chart Course,Navigation
+Clean O2 Filter,O2
+Clear Asteroids,Weapons
+Divert Power,Communications
+Divert Power,Electrical
+Divert Power,Lower Engine
+Divert Power,Navigation
+Divert Power,O2
+Divert Power,Reactor
+Divert Power,Security
+Divert Power,Shields
+Divert Power,Upper Engine
+Empty Chute,O2
+Empty Chute,Storage
+Empty Garbage,Storage
+Fix Wiring,Admin
+Fix Wiring,Electrical
+Fix Wiring,Navigation
+Fix Wiring,Security
+Fix Wiring,Storage
+Fuel Engines,Lower Engine
+Fuel Engines,Storage
+Fuel Engines,Upper Engine
+Inspect Sample,MedBay
+Prime Shields,Shields
+Stabilize Steering,Navigation
+Start Reactor,Reactor
+Submit Scan,MedBay
+Swipe Card,Admin
+Unlock Manifolds,Reactor
+Upload Data,Admin
+Upload Data,Communications
+Upload Data,Electrical
+Upload Data,Navigation
+Upload Data,Weapons

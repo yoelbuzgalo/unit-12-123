@@ -1,0 +1,57 @@
+The journey begins! There are 4 imposters on board!
+Green Crewmate begins Empty Chute in O2
+  Oh no! An imposter is waiting in ambush! Green Crewmate is murdered!
+Purple Crewmate begins Prime Shields in Shields
+  Task complete!
+  Purple Crewmate heads back to the cafeteria.
+Pink Crewmate begins Divert Power in Shields
+  Task complete!
+  Pink Crewmate heads back to the cafeteria.
+Black Crewmate begins Unlock Manifolds in Reactor
+  Task complete!
+  Black Crewmate heads back to the cafeteria.
+Brown Crewmate begins Divert Power in Communications
+  Task complete!
+  Brown Crewmate heads back to the cafeteria.
+White Crewmate begins Upload Data in Admin
+  Task complete!
+  White Crewmate heads back to the cafeteria.
+Purple Crewmate begins Fix Wiring in Security
+  Task complete!
+  Purple Crewmate heads back to the cafeteria.
+Pink Crewmate begins Stabilize Steering in Navigation
+  Oh no! An imposter is waiting in ambush! Pink Crewmate is murdered!
+Black Crewmate begins Prime Shields in Shields
+  Task complete!
+  Black Crewmate heads back to the cafeteria.
+Brown Crewmate begins Divert Power in O2
+  Task complete!
+  Brown Crewmate heads back to the cafeteria.
+White Crewmate begins Fix Wiring in Security
+  Task complete!
+  White Crewmate heads back to the cafeteria.
+Purple Crewmate begins Submit Scan in MedBay
+  Task complete!
+  Purple Crewmate heads back to the cafeteria.
+Black Crewmate begins Divert Power in Electrical
+  Oh no! An imposter is waiting in ambush! Black Crewmate is murdered!
+Brown Crewmate begins Prime Shields in Shields
+  Task complete!
+  Brown Crewmate heads back to the cafeteria.
+White Crewmate begins Chart Course in Navigation
+  Task complete!
+  White Crewmate heads back to the cafeteria.
+Purple Crewmate begins Fuel Engines in Lower Engine
+  Oh no! An imposter is waiting in ambush! Purple Crewmate is murdered!
+Brown Crewmate begins Upload Data in Communications
+  Oh no! An imposter is waiting in ambush! Brown Crewmate is murdered!
+White Crewmate begins Align Engine Output in Upper Engine
+  Oh no! An imposter is waiting in ambush! White Crewmate is murdered!
+The journey has ended!
+The imposters wiped out the crew!
+   Green Crewmate (deceased)
+   Pink Crewmate (deceased)
+   Black Crewmate (deceased)
+   Purple Crewmate (deceased)
+   Brown Crewmate (deceased)
+   White Crewmate (deceased)

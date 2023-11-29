@@ -1,0 +1,111 @@
+How many imposters: 1
+The journey begins! There are 1 imposters on board!     
+Black Crewmate begins Fix Wiring in Storage
+  Task complete!
+  Black Crewmate heads back to the cafeteria.
+Cyan Crewmate begins Align Engine Output in Upper Engine
+  Task complete!
+  Cyan Crewmate heads back to the cafeteria.
+Blue Crewmate begins Empty Chute in Storage
+  Task complete!
+  Blue Crewmate heads back to the cafeteria.
+Purple Crewmate begins Align Engine Output in Lower Engine
+  Task complete!
+  Purple Crewmate heads back to the cafeteria.
+Red Crewmate begins Fix Wiring in Security
+  Task complete!
+  Red Crewmate heads back to the cafeteria.
+White Crewmate begins Upload Data in Electrical
+  Task complete!
+  White Crewmate heads back to the cafeteria.
+Yellow Crewmate begins Clean O2 Filter in O2
+  Task complete!
+  Yellow Crewmate heads back to the cafeteria.
+Pink Crewmate begins Unlock Manifolds in Reactor
+  Oh no! An imposter is waiting in ambush! Pink Crewmate is murdered!
+Brown Crewmate begins Clear Asteroids in Weapons
+  Task complete!
+  Brown Crewmate heads back to the cafeteria.
+Black Crewmate begins Divert Power in Security
+  Task complete!
+  Black Crewmate heads back to the cafeteria.
+Cyan Crewmate begins Stabilize Steering in Navigation
+  Task complete!
+  Cyan Crewmate heads back to the cafeteria.
+Blue Crewmate begins Inspect Sample in MedBay
+  Oh no! An imposter is waiting in ambush! Blue Crewmate is murdered!
+Purple Crewmate begins Divert Power in Security
+  Task complete!
+  Purple Crewmate heads back to the cafeteria.
+Red Crewmate begins Fuel Engines in Lower Engine
+  Task complete!
+  Red Crewmate heads back to the cafeteria.
+White Crewmate begins Fuel Engines in Upper Engine
+  Task complete!
+  White Crewmate heads back to the cafeteria.
+Yellow Crewmate begins Divert Power in Upper Engine
+  Task complete!
+  Yellow Crewmate heads back to the cafeteria.
+Brown Crewmate begins Upload Data in Weapons
+  Task complete!
+  Brown Crewmate heads back to the cafeteria.
+Black Crewmate begins Upload Data in Navigation
+  Task complete!
+  Black Crewmate heads back to the cafeteria.
+Cyan Crewmate begins Divert Power in Security
+  Task complete!
+  Cyan Crewmate heads back to the cafeteria.
+Purple Crewmate begins Divert Power in Upper Engine
+  Oh no! An imposter is waiting in ambush! Purple Crewmate is murdered!
+Red Crewmate begins Divert Power in Electrical
+  Task complete!
+  Red Crewmate has finished all of their tasks!
+White Crewmate begins Upload Data in Weapons
+  Task complete!
+  White Crewmate heads back to the cafeteria.
+Yellow Crewmate begins Divert Power in Upper Engine
+  Task complete!
+  Yellow Crewmate heads back to the cafeteria.
+Brown Crewmate begins Fix Wiring in Navigation
+  Task complete!
+  Brown Crewmate heads back to the cafeteria.
+Black Crewmate begins Divert Power in Lower Engine
+  Oh no! An imposter is waiting in ambush! Black Crewmate is murdered!
+Cyan Crewmate begins Swipe Card in Admin
+  Task complete!
+  Cyan Crewmate heads back to the cafeteria.
+White Crewmate begins Fuel Engines in Lower Engine
+  Task complete!
+  White Crewmate heads back to the cafeteria.
+Yellow Crewmate begins Upload Data in Electrical
+  Task complete!
+  Yellow Crewmate heads back to the cafeteria.
+Brown Crewmate begins Divert Power in O2
+  Task complete!
+  Brown Crewmate heads back to the cafeteria.
+Cyan Crewmate begins Fix Wiring in Electrical
+  Task complete!
+  Cyan Crewmate has finished all of their tasks!
+White Crewmate begins Divert Power in Security
+  Task complete!
+  White Crewmate has finished all of their tasks!
+Yellow Crewmate begins Divert Power in Shields
+  Task complete!
+  Yellow Crewmate heads back to the cafeteria.
+Brown Crewmate begins Swipe Card in Admin
+  Task complete!
+  Brown Crewmate has finished all of their tasks!
+Yellow Crewmate begins Divert Power in Shields
+  Task complete!
+  Yellow Crewmate has finished all of their tasks!
+The journey has ended!
+The crew made it!
+   Red Crewmate
+   Cyan Crewmate
+   White Crewmate
+   Brown Crewmate
+   Yellow Crewmate
+   Pink Crewmate (deceased)
+   Blue Crewmate (deceased)
+   Purple Crewmate (deceased)
+   Black Crewmate (deceased)

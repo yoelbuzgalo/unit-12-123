@@ -1,0 +1,41 @@
+Unit 11 Practice Problems (Unit 12 Day 1 mini-practicum)
+
+The goal of these "mini practica" is to give you practice with coding problems
+similar to those that you will see on the midterm practica. You will be 
+required to solve each problem with minimal assistance. You should use these
+mini-practica as an opportunity to gauge your preparedness for the exams.
+
+You should create all of your required files in this folder along with these
+instructions.
+
+Each mini-practicum counts as a homework assignment. 
+===========================================
+
+You have been provided with a file named mini_practicum.py that contains some
+code to help you solve the following problems.  
+
+1. A circle has a center (x, y) and a radius.  
+    a. Use a tuple to represent the center of a circle. 
+
+2. A circle has a string representation in the form "Center: (x, y)  radius: r"
+
+3. We will say circle A is less than circle B if the radius of circle A is less
+   than the radius of circle B. 
+
+4. Two circles intersect if and only if the sum of the radii of the two circles
+   is greater than the distance between the centers. The distance between two 
+   points (x1, y1) and (x2, y2) is computed as:
+      math.sqrt((x1-x2)**2 + (y1-y2)**2) 
+
+Examine the main function. You will need to add methods to the circle class 
+so that the output of your program is as follows when it runs: 
+
+[center: (3, 3) radius: 1, center: (0, 0) radius: 2, center: (4, 0) radius:  3] 
+circle1 and circle2 intersect: True 
+circle1 and circle3 intersect: False 
+circle2 and circle3 intersect: True 
+
+A visualization of the three circles has been provided to you in the 
+circles.png image file.
+
+
