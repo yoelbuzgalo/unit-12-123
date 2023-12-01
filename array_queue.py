@@ -7,3 +7,9 @@ class Queue:
         self.__front = 0
         self.__back = 0
         self.__size = 0
+
+    def __str__(self):
+        stringify = ""
+        for i in range(self.__front, self.__back):
+            stringify += self.__elements[i]
+        return stringify
