@@ -8,8 +8,15 @@ class Queue:
         self.__back = 0
         self.__size = 0
 
+    def is_empty(self):
+        if self.__size == 0:
+            return True
+        
+    def __len__(self):
+        return self.__size
+
     def __str__(self):
         stringify = ""
         for i in range(self.__front, self.__back):
-            stringify += self.__elements[i]
-        return stringify
+            stringify += self.__elements[i] + ", "
+        return "["+ stringify[:-2] + "]"
