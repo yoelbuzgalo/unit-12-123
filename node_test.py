@@ -8,4 +8,15 @@ def test_creation():
 
     # Analysis
     assert actual.is_empty()
-    assert print(actual)
+    assert str(actual) == "[]"
+
+def test_push_one():
+    # Setup
+    stack = Stack()
+
+    # Invoke
+    stack.push(1)
+
+    # Analysis
+    assert not stack.is_empty()
+    assert str(stack) == "[1]"
