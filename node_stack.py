@@ -35,6 +35,16 @@ class Stack:
         if self.__top == None:
             raise IndexError("Can't peek an empty queue")
         return self.__top.get_value()
+    
+    def pop(self):
+        if self.__top == None:
+            raise IndexError("Cant pop an empty queue")
+        
+        value = self.__top.get_value()
+        self.__top = self.__top.get_next()
+        self.__size -= 1
+        
+        return value
 
     def push(self, value):
         new_node = Node(value)

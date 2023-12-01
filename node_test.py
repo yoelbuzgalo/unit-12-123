@@ -82,3 +82,33 @@ def test_peek_2():
 
     # Analysis
     assert peek == expected
+
+def test_pop_empty():
+    # Setup
+    stack = Stack()
+    
+    # Invoke
+    try:
+        popped = stack.pop()
+    
+    # Analysis
+    except IndexError:
+        assert True
+        return
+    assert False, "Expected IndexError got " + str(popped)
+
+def test_pop_2():
+    # Setup
+    stack = Stack()
+    expected = 1
+    
+    # Invoke
+    stack.push(expected)
+    stack.push(2)
+    popped = stack.pop()
+    popped = stack.pop()
+
+    # Analysis
+    assert popped == expected
+    assert str(stack) == "[]"
+    assert len(stack) == 0
