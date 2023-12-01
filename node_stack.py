@@ -31,6 +31,11 @@ class Stack:
         # return count
         return self.__size
     
+    def peek(self):
+        if self.__top == None:
+            raise IndexError("Can't peek an empty queue")
+        return self.__top.get_value()
+
     def push(self, value):
         new_node = Node(value)
         new_node.set_next(self.__top)

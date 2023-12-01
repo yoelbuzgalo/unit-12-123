@@ -55,3 +55,30 @@ def test_len_2():
 
     # Analysis
     assert length == 2
+
+def test_peek_empty():
+    # Setup
+    stack = Stack()
+    
+    # Invoke
+    try:
+        peek = stack.peek()
+    
+    # Analysis
+    except IndexError:
+        assert True
+        return
+    assert False, "Expected IndexError got " + str(peek)
+
+def test_peek_2():
+    # Setup
+    stack = Stack()
+    expected = 1
+    
+    # Invoke
+    stack.push(2)
+    stack.push(expected)
+    peek = stack.peek()
+
+    # Analysis
+    assert peek == expected
