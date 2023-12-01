@@ -23,12 +23,13 @@ class Stack:
         return "[" + Stack.__stringify(self.__top)[:-2] + "]"
     
     def __len__(self):
-        count = 0
-        node = self.__top
-        while not node == None:
-            count += 1
-            node = node.get_next()
-        return count
+        # count = 0
+        # node = self.__top
+        # while not node == None:
+        #     count += 1
+        #     node = node.get_next()
+        # return count
+        return self.__size
     
     def push(self, value):
         new_node = Node(value)
