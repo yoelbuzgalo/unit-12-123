@@ -16,11 +16,19 @@ class Stack:
         if node == None:
             return string
         else:
-            string = str(node.get_value()) + ", "
+            string += str(node.get_value()) + ", "
             return Stack.__stringify(node.get_next(), string)
         
     def __str__(self):
         return "[" + Stack.__stringify(self.__top)[:-2] + "]"
+    
+    def __len__(self):
+        count = 0
+        node = self.__top
+        while not node == None:
+            count += 1
+            node = node.get_next()
+        return count
     
     def push(self, value):
         new_node = Node(value)
