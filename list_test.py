@@ -56,3 +56,33 @@ def test_pop_stack():
     assert not stack.is_empty()
     assert len(stack) == 1
     assert result == expected
+
+def test_pop_empty_stack():
+    # Setup
+    stack = Stack()
+
+    # Invoke
+    try:
+        result = stack.pop()
+
+    # Analysis
+    except:
+        assert stack.is_empty()
+        assert True
+        return
+    assert False, "Expected IndexError, got " + str(result)
+
+def test_peek_empty_stack():
+        # Setup
+    stack = Stack()
+
+    # Invoke
+    try:
+        result = stack.peek()
+
+    # Analysis
+    except:
+        assert stack.is_empty()
+        assert True
+        return
+    assert False, "Expected IndexError, got " + str(result)
