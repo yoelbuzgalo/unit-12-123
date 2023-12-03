@@ -37,5 +37,17 @@ def test_main_stack_content():
     result = process_file(filepath)
     peeked_result = result.peek()
 
-
+    # Analysis
     assert type(peeked_result) == type(Stack())
+
+def test_list_stack_content():
+    # Setup
+    filepath = "./data/walrus.txt"
+
+    # Invoke
+    result = process_file(filepath)
+    top_line_in_main = result.peek()
+    top_character_in_stack = top_line_in_main.peek()
+
+    # Analysis
+    assert top_character_in_stack == "T"
