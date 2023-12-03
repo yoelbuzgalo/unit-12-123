@@ -17,3 +17,22 @@ def process_file(filename):
     except FileNotFoundError:
         print("Could not find or open:", filename)
         return False
+    
+def process_stack(main_stack):
+    """
+    This function takes in a main stack and prints & removes every line until complete.
+    """
+    while len(main_stack) > 0:
+        line_stack = main_stack.pop() # Get the line
+        string = "" # Initialize empty string container
+        while len(line_stack) > 0:
+            string += line_stack.pop()
+        print(string)
+    return
+
+def main():
+    processed_file = process_file("./data/walrus.txt")
+    process_stack(processed_file)
+
+if __name__ == "__main__":
+    main()
