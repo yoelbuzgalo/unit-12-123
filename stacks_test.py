@@ -9,6 +9,7 @@ def test_invalid_file():
     try:
         result = process_file(filepath)
     
+    # Analysis
     except:
         assert True
         return
@@ -22,7 +23,19 @@ def test_valid_file():
     try:
         result = process_file(filepath)
 
+    # Analysis
     except:
         assert False
         return
     assert type(result) == type(Stack())
+
+def test_main_stack_content():
+    # Setup
+    filepath = "./data/walrus.txt"
+
+    # Invoke
+    result = process_file(filepath)
+    peeked_result = result.peek()
+
+
+    assert type(peeked_result) == type(Stack())
