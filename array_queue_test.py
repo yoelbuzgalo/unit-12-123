@@ -77,3 +77,18 @@ def test_dequeue():
     assert popped == expected
     assert str(queue) == "[]"
     assert len(queue) == 0
+
+def test_resize():
+    # Setup
+    queue = Queue()
+
+    # Invoke
+    queue.enqueue(5)
+    queue.enqueue(10)
+    queue.enqueue(15)
+    queue.enqueue(20)
+
+    # Analysis
+    assert not queue.is_empty()
+    assert str(queue) == "[5, 10, 15, 20]"
+    assert len(queue) == 4

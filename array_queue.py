@@ -17,11 +17,23 @@ class Queue:
 
     def __str__(self):
         stringify = ""
-        for i in range(self.__front, self.__back):
+        for i in range(self.__size):
             stringify += str(self.__elements[i]) + ", "
         return "["+ stringify[:-2] + "]"
     
+    def __resize(self):
+        new_elements = arrays.Array(self.__size*2)
+        for i in range(self.__size):
+            front = (self.__front + i) % self.__size
+            new_elements[i] = self.__elements[front]
+        self.__elements = new_elements
+        self.__front = 0
+        self.__back = self.__size
+        
+    
     def enqueue(self, value):
+        if self.__size == len(self.__elements):
+            self.__resize()
         self.__elements[self.__back] = value
         self.__back = (self.__back + 1) % len(self.__elements)
         self.__size += 1
