@@ -18,5 +18,11 @@ class Queue:
     def __str__(self):
         stringify = ""
         for i in range(self.__front, self.__back):
-            stringify += self.__elements[i] + ", "
+            stringify += str(self.__elements[i]) + ", "
         return "["+ stringify[:-2] + "]"
+    
+    def enqueue(self, value):
+        self.__elements[self.__back] = value
+        self.__back == (self.__back + 1) % len(self.__elements)
+        self.__size += 1
+
