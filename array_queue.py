@@ -30,3 +30,12 @@ class Queue:
         if self.__size == 0:
             raise IndexError("Empty Queue")
         return self.__elements[self.__front]
+
+    def dequeue(self):
+        if self.__size == 0:
+            raise IndexError("Empty queue")
+        value = self.__elements[self.__front]
+        self.__elements[self.__front] = None
+        self.__front = (self.__front+1) % len(self.__elements)
+        self.__size -= 1
+        return value
