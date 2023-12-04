@@ -23,6 +23,10 @@ class Queue:
     
     def enqueue(self, value):
         self.__elements[self.__back] = value
-        self.__back == (self.__back + 1) % len(self.__elements)
+        self.__back = (self.__back + 1) % len(self.__elements)
         self.__size += 1
 
+    def front(self):
+        if self.__size == 0:
+            raise IndexError("Empty Queue")
+        return self.__elements[self.__front]
