@@ -1,4 +1,5 @@
 import csv
+from list_stack import Stack
 
 class Task:
     """
@@ -24,6 +25,38 @@ class Task:
 
     def __repr__(self):
         return self.__name + " in " + self.__location
+
+class Crewmate:
+    """
+    This class represents a crewmate object which will consist their unique color identifier and associated tasks assigned to them
+    """
+    __slots__ = ['__color', '__murdered', '__tasks']
+    
+    def __init__(self, color):
+        self.__color = color
+        self.__murdered = False
+        self.__tasks = Stack()
+
+    def get_color(self): # Returns crewmate's color
+        return self.__color
+    
+    def get_task(self): # Returns a copy of most priority (LIFO)
+        if len(self.__tasks) > 0:
+            return self.__tasks.peek()
+    
+    def complete_task(self): # If crewmate's task is marked complete, pop out of his stack
+        self.__tasks.pop()
+    
+    def add_task(self, task): # Add a given task to crewmate's tasks todo
+        self.__tasks.push(task)
+    
+    def is_murdered(self): # Checks if the crewmate is murdered or not, returns True if murdered
+        if self.__murdered == True:
+            return True
+        return False
+
+    def murder(self): # Kill the crewmate if this function is called.
+        self.__murdered = True
 
 def parse_file(filename):
     """
