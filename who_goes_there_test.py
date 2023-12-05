@@ -88,13 +88,15 @@ def test_crewmate_task_add_get():
 def test_crewmate_str_repr():
     # Setup
     crewmate = Crewmate('RandomColor')
-    task = Task('Random_Task', 'Random_Location')
-    crewmate.add_task(task)
+    task_1 = Task('Task_1', 'Location_1')
+    task_2 = Task('Task_2', 'Location_2')
+    crewmate.add_task(task_1)
+    crewmate.add_task(task_2)
     expected_string = "RandomColor Crewmate"
     expected_repr = "Crewmate:"\
         + "\n color=" + 'RandomColor'\
         + "\n murdered=" + 'False'\
-        + "\n tasks=" + '[Random_Task in Random_Location]'\
+        + "\n tasks=" + '['+str(task_1)+', '+str(task_2)+']'\
 
     # Invoke
     result_string = str(crewmate)
