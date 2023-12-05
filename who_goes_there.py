@@ -20,6 +20,9 @@ class Task:
     def set_location(self, location):
         self.__location = location
 
+    def __repr__(self):
+        return self.__name + " in " + self.__location
+
 def main():
     pass
 
