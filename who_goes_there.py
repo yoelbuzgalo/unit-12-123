@@ -69,6 +69,27 @@ class Crewmate:
     def murder(self): # Kill the crewmate if this function is called.
         self.__murdered = True
 
+class Ship:
+    """
+    This class represents the entire ship's available tasks throughout the journey, whereas locations are derived from each tasks
+    """
+    __slots__ = ['__tasks', '__locations']
+
+    def __init__(self, tasks):
+        self.__tasks = [task for task in tasks] # Make a copy of new seperate list, rather than referencing to original list
+        self.__locations = set()
+        for task in self.__tasks:
+            self.__locations.add(task.get_location())
+    
+    def get_tasks(self):
+        # Returns the object containing the tasks list
+        return self.__tasks
+    
+    def get_locations(self):
+        # Returns all of the unique locations in a set
+        return self.__locations
+    
+
 def parse_file(filename):
     """
     This function parses a .csv file and returns a list of tasks

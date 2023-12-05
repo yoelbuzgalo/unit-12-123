@@ -1,4 +1,4 @@
-from who_goes_there import Task, parse_file, Crewmate
+from who_goes_there import Task, parse_file, Crewmate, Ship
 
 # Task class test
 
@@ -116,3 +116,16 @@ def test_crewmate_str_deceased():
 
     # Analysis
     assert result_string == expected_string
+
+def test_ship():
+    # Setup
+    tasks = [Task('Task_1', 'Task_1_Location'), Task('Task_2', 'Task_2_Location')]
+    
+    # Invoke
+    ship = Ship(tasks)
+
+    # Analysis
+    assert ship.get_tasks()[0].get_name() == tasks[0].get_name()
+    assert ship.get_tasks()[1].get_name() == tasks[1].get_name()
+    assert tasks[0].get_location() in ship.get_locations()
+    assert tasks[1].get_location() in ship.get_locations()
