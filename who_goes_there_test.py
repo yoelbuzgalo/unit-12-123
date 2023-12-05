@@ -1,4 +1,4 @@
-from who_goes_there import Task
+from who_goes_there import Task, parse_file
 
 def test_task_get():
     # Setup
@@ -32,3 +32,24 @@ def test_task_repr():
 
     # Analysis
     assert "randomname in randomlocation" == result
+
+def test_invalid_filepath():
+    # Setup
+    filepath = "invalidpath"
+
+    # Invoke
+    result = parse_file(filepath)
+
+    # Analysis
+    assert result == None
+
+def test_valid_path():
+    # Setup
+    filepath = "./tasks_01.csv"
+
+    # Invoke
+    result = parse_file(filepath)
+
+    # Analysis
+    assert result != None
+    assert type(result) == type(set())
