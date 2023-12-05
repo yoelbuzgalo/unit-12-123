@@ -84,3 +84,33 @@ def test_crewmate_task_add_get():
 
     # Analysis
     assert result == task
+
+def test_crewmate_str_repr():
+    # Setup
+    crewmate = Crewmate('RandomColor')
+    task = Task('Random_Task', 'Random_Location')
+    crewmate.add_task(task)
+    expected_string = "RandomColor Crewmate"
+    expected_repr = "Crewmate:"\
+        + "\n color=" + 'RandomColor'\
+        + "\n murdered=" + 'False'\
+        + "\n tasks=" + '[Random_Task in Random_Location]'\
+
+    # Invoke
+    result_string = str(crewmate)
+    result_repr = repr(crewmate)
+
+    # Analysis
+    assert result_string == expected_string
+    assert result_repr == expected_repr
+
+def test_crewmate_str_deceased():
+    # Setup
+    crewmate = Crewmate('RandomColor')
+    crewmate.murder()
+    expected_string = "RandomColor Crewmate (deceased)"
+    # Invoke
+    result_string = str(crewmate)
+
+    # Analysis
+    assert result_string == expected_string

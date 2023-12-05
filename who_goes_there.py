@@ -37,6 +37,17 @@ class Crewmate:
         self.__murdered = False
         self.__tasks = Stack()
 
+    def __repr__(self):
+        return "Crewmate:"\
+        + "\n color=" + self.__color\
+        + "\n murdered=" + str(self.__murdered)\
+        + "\n tasks=" + str(self.__tasks)\
+    
+    def __str__(self):
+        if self.is_murdered():
+            return self.__color + " Crewmate (deceased)"
+        return self.__color + " Crewmate"
+
     def get_color(self): # Returns crewmate's color
         return self.__color
     
