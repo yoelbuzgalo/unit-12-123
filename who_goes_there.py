@@ -1,6 +1,7 @@
 import csv
 import random
 from node_stack import Stack
+from array_queue import Queue
 
 CREW_COLORS = ['Black', 'Blue', 'Brown', 'Cyan', 'Green', 'Pink', 'Purple', 'Red', 'White', 'Yellow']
 
@@ -155,9 +156,9 @@ class Ship:
         self.__create_crew(imposters)
         self.__assign_tasks()
 
-        cafeteria = Stack()
+        cafeteria = Queue()
         for crewmate in self.__crew['crewmates']:
-            cafeteria.push(crewmate)
+            cafeteria.enqueue(crewmate)
 
         death_roll = set()
         survived = set()
@@ -165,12 +166,12 @@ class Ship:
         while not cafeteria.is_empty():
             
             # Send out a crewmate to complete a task
-            crewmate = cafeteria.pop()
+            crewmate = cafeteria.dequeue()
 
             if (crewmate in death_roll) or (crewmate in survived):
                 continue
             
-            # Assign new locations for imposters
+            # Assign new locations for imposters and attempt to kill the crewmate
             for imposter in self.__crew['imposters']:
                 iterate_locations = [location for location in self.__locations] # Had to do this because I needed to unpack the 'unique locations' set stored in object and be able to iterate and get specific locations at an index
                 select_random_location = iterate_locations[random.randrange(0, len(iterate_locations))]
@@ -181,15 +182,18 @@ class Ship:
                     death_roll.add(crewmate)
                     print("Oof! Imposter has killed", crewmate, "death roll is at:", len(death_roll))
                     break
-                else:
-                    completed_task = crewmate.complete_task()
-                    if crewmate.get_task() == None:
-                        print(crewmate, "has survived the game!")
-                        survived.add(crewmate)
-                        break
-                    else:
-                        print(crewmate, "has completed his task without being killed:", completed_task)
-                        cafeteria.push(crewmate) # Put back to cafeteria and make them work again next round
+            
+            # If the crewmate is murdered, skip to next queue
+            if crewmate.is_murdered():
+                continue
+
+            completed_task = crewmate.complete_task()
+            if crewmate.get_task() == None:
+                print(crewmate, "has survived the game!")
+                survived.add(crewmate)
+            else:
+                print(crewmate, "has completed his task without being killed:", completed_task)
+                cafeteria.enqueue(crewmate) # Put back to cafeteria and make them work again next round
 
         if len(survived) == 0:
             print("Imposters have won the game, killing all of the crewmates!")
@@ -218,8 +222,8 @@ def parse_file(filename):
 
 def main():
     tasks = parse_file("./tasks_01.csv")
-    ship = Ship(tasks)
     while True:
+        ship = Ship(tasks)
         try:
             user_input = input("Enter amount of imposters (1-4): ")
             
