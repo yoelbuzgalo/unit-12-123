@@ -166,6 +166,11 @@ class Ship:
     def start_journey(self, imposters):
         self.__create_crew(imposters)
         self.__assign_tasks()
+
+        cafeteria = []
+        for crewmate in self.__crew['crewmates']:
+            cafeteria.append(crewmate)
+
         return self.__crew # Only for testing purpose
  
 
