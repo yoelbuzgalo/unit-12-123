@@ -153,6 +153,9 @@ class Ship:
         return
     
     def start_journey(self, imposters):
+
+        print("The journey begins! There are", imposters, "on board!")
+
         self.__create_crew(imposters)
         self.__assign_tasks()
 
@@ -168,9 +171,12 @@ class Ship:
             # Send out a crewmate to complete a task
             crewmate = cafeteria.dequeue()
 
-            if (crewmate in death_roll) or (crewmate in survived):
+            if crewmate.get_task() == None:
+                survived.add(crewmate)
                 continue
             
+            print(crewmate, "begins", crewmate.get_task())
+
             # Assign new locations for imposters and attempt to kill the crewmate
             for imposter in self.__crew['imposters']:
                 iterate_locations = [location for location in self.__locations] # Had to do this because I needed to unpack the 'unique locations' set stored in object and be able to iterate and get specific locations at an index
@@ -178,29 +184,30 @@ class Ship:
                 imposter.set_location(select_random_location)
 
                 if imposter.get_location() == crewmate.get_task().get_location():
+                    print("\tOh no! An imposter is waiting in ambush!", crewmate,"is murdered!")
                     crewmate.murder()
                     death_roll.add(crewmate)
-                    print("Oof! Imposter has killed", crewmate, "death roll is at:", len(death_roll))
                     break
             
-            # If the crewmate is murdered, skip to next queue
+            # If the crewmate is murdered, skip to next person
             if crewmate.is_murdered():
                 continue
 
-            completed_task = crewmate.complete_task()
-            if crewmate.get_task() == None:
-                print(crewmate, "has survived the game!")
-                survived.add(crewmate)
-            else:
-                print(crewmate, "has completed his task without being killed:", completed_task)
-                cafeteria.enqueue(crewmate) # Put back to cafeteria and make them work again next round
+            crewmate.complete_task()
+            print("\tTask complete!")
+            cafeteria.enqueue(crewmate) # Put back to cafeteria and make them work again next round
+            print("\t",crewmate, "heads back to the cafeteria")
+
+        print("The journey has ended!")
 
         if len(survived) == 0:
-            print("Imposters have won the game, killing all of the crewmates!")
+            print("The imposters wiped out the crew!")
+            for crew in self.__crew['crewmates']:
+                print(crew)
         else:
-            print("Crewmates have won the game!")
-            print("Although, these are are the crewmates that died during the game,", death_roll)            
-
+            print("The crew made it!")
+            for crew in self.__crew['crewmates']:
+                print(crew)
         return self.__crew # Only for testing purpose
  
 
@@ -225,7 +232,7 @@ def main():
     while True:
         ship = Ship(tasks)
         try:
-            user_input = input("Enter amount of imposters (1-4): ")
+            user_input = input("How many imposters (1-4): ")
             
             if user_input == "": # Quit if user input is blank
                 return
