@@ -1,5 +1,8 @@
 import csv
+import random
 from list_stack import Stack
+
+CREW_COLORS = ['Black', 'Blue', 'Brown', 'Cyan', 'Green', 'Pink', 'Purple', 'Red', 'White', 'Yellow']
 
 class Task:
     """
@@ -89,6 +92,52 @@ class Ship:
         # Returns all of the unique locations in a set
         return self.__locations
     
+    def __inquire_imposters(self):
+        """
+        Helper function to inquire imposters
+        """
+        try:
+            imposter_amt = int(input("Enter number of imposters between 1 to 4: "))
+            if (imposter_amt > 4) or (imposter_amt < 1):
+                raise ValueError()
+            return imposter_amt
+        except ValueError:
+            print("Invalid input")
+
+    def __create_crew(self, imposters):
+        """
+        Helper function to create a set of crewmates
+        """
+        crew = set() # Initialize a set of crew
+        colors = set(CREW_COLORS) # Initialize a set of unique colors available for selection
+        count = 0 # Initialize counter variable
+        amount_to_create = 10 - imposters
+        
+        while count < amount_to_create:
+            random_color = CREW_COLORS[random.randrange(0, len(CREW_COLORS))] # Select a random color
+            if random_color in colors: # If selected color is available, go ahead use it
+                crew.add(Crewmate(random_color))
+                colors.remove(random_color) # Once used, remove it from available colors
+                count += 1
+            else:
+                continue
+
+        return crew
+
+    def start_journey(self):
+        while True:
+            imposters = self.__inquire_imposters()
+            # Start game only imposters are provided between 1-4
+            if imposters:
+                crew = self.__create_crew(imposters)
+                print(crew)
+                break
+        return
+                
+
+
+
+    
 
 def parse_file(filename):
     """
@@ -108,6 +157,8 @@ def parse_file(filename):
 
 def main():
     parse_file("./tasks_01.csv")
+    ship = Ship([Task('Random1', 'Random1Location')])
+    ship.start_journey()
 
 if __name__ == "__main__":
     main()
