@@ -1,6 +1,6 @@
 import csv
 import random
-from list_stack import Stack
+from node_stack import Stack
 
 CREW_COLORS = ['Black', 'Blue', 'Brown', 'Cyan', 'Green', 'Pink', 'Purple', 'Red', 'White', 'Yellow']
 
@@ -62,10 +62,11 @@ class Crewmate:
             return self.__tasks.peek()
     
     def complete_task(self): # If crewmate's task is marked complete, pop out of his stack
-        self.__tasks.pop()
+        return self.__tasks.pop()
     
     def add_task(self, task): # Add a given task to crewmate's tasks todo
         self.__tasks.push(task)
+        return
     
     def is_murdered(self): # Checks if the crewmate is murdered or not, returns True if murdered
         if self.__murdered == True:
@@ -119,18 +120,6 @@ class Ship:
     
     def get_crew(self):
         return self.__crew
-    
-    # def __inquire_imposters(self):
-    #     """
-    #     Helper function to inquire imposters
-    #     """
-    #     try:
-    #         imposter_amt = int(input("Enter number of imposters between 1 to 4: "))
-    #         if (imposter_amt > 4) or (imposter_amt < 1):
-    #             raise ValueError()
-    #         return imposter_amt
-    #     except ValueError:
-    #         print("Invalid input")
 
     def __create_crew(self, imposters):
         """
@@ -161,15 +150,52 @@ class Ship:
                 random_task = task_list[random.randrange(0, len(task_list))]
                 self.__crew['crewmates'][i].add_task(random_task)
         return
-
-
+    
     def start_journey(self, imposters):
         self.__create_crew(imposters)
         self.__assign_tasks()
 
-        cafeteria = []
+        cafeteria = Stack()
         for crewmate in self.__crew['crewmates']:
-            cafeteria.append(crewmate)
+            cafeteria.push(crewmate)
+
+        death_roll = set()
+        survived = set()
+
+        while not cafeteria.is_empty():
+            
+            # Send out a crewmate to complete a task
+            crewmate = cafeteria.pop()
+
+            if (crewmate in death_roll) or (crewmate in survived):
+                continue
+            
+            # Assign new locations for imposters
+            for imposter in self.__crew['imposters']:
+                iterate_locations = [location for location in self.__locations] # Had to do this because I needed to unpack the 'unique locations' set stored in object and be able to iterate and get specific locations at an index
+                select_random_location = iterate_locations[random.randrange(0, len(iterate_locations))]
+                imposter.set_location(select_random_location)
+
+                if imposter.get_location() == crewmate.get_task().get_location():
+                    crewmate.murder()
+                    death_roll.add(crewmate)
+                    print("Oof! Imposter has killed", crewmate, "death roll is at:", len(death_roll))
+                    break
+                else:
+                    completed_task = crewmate.complete_task()
+                    if crewmate.get_task() == None:
+                        print(crewmate, "has survived the game!")
+                        survived.add(crewmate)
+                        break
+                    else:
+                        print(crewmate, "has completed his task without being killed:", completed_task)
+                        cafeteria.push(crewmate) # Put back to cafeteria and make them work again next round
+
+        if len(survived) == 0:
+            print("Imposters have won the game, killing all of the crewmates!")
+        else:
+            print("Crewmates have won the game!")
+            print("Although, these are are the crewmates that died during the game,", death_roll)            
 
         return self.__crew # Only for testing purpose
  
@@ -193,8 +219,21 @@ def parse_file(filename):
 def main():
     tasks = parse_file("./tasks_01.csv")
     ship = Ship(tasks)
-    ship.start_journey()
-    return
+    while True:
+        try:
+            user_input = input("Enter amount of imposters (1-4): ")
+            
+            if user_input == "": # Quit if user input is blank
+                return
+            
+            amount_of_imposters = int(user_input)
+
+            if amount_of_imposters > 4 or amount_of_imposters < 1:
+                raise ValueError()
+            
+            ship.start_journey(amount_of_imposters)
+        except ValueError:
+            print("Invalid input")
 
 if __name__ == "__main__":
     main()
