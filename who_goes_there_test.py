@@ -130,7 +130,7 @@ def test_ship():
     assert tasks[0].get_location() in ship.get_locations()
     assert tasks[1].get_location() in ship.get_locations()
 
-def test_crew_and_imposters():
+def test_len_crew_and_imposters():
     # Setup
     tasks = [Task('Task_1', 'Task_1_Location'), Task('Task_2', 'Task_2_Location')]
     ship = Ship(tasks)
@@ -148,3 +148,19 @@ def test_crew_and_imposters():
     assert len(imposters) == 3
     assert type(Crewmate('RandomColor')) == type(expected_crewmate_obj)
     assert type(Imposter()) == type(expected_imposter_obj)
+
+def test_crew_tasks():
+    # Setup
+    tasks = [Task('Task_1', 'Task_1_Location'), Task('Task_2', 'Task_2_Location')]
+    ship = Ship(tasks)
+
+    # Invoke
+    ship.start_journey(3)
+    crew = ship.get_crew()
+    crewmates = crew['crewmates']
+
+    # Analysis
+    assert len(crewmates[0].get_tasks()) >= 3 and len(crewmates[0].get_tasks()) <= 6
+    assert len(crewmates[1].get_tasks()) >= 3 and len(crewmates[1].get_tasks()) <= 6
+    assert len(crewmates[-1].get_tasks()) >= 3 and len(crewmates[-1].get_tasks()) <= 6
+    assert crewmates[0].get_task() == tasks[0] or crewmates[0].get_task == tasks[1]

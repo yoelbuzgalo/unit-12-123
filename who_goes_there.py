@@ -54,6 +54,9 @@ class Crewmate:
     def get_color(self): # Returns crewmate's color
         return self.__color
     
+    def get_tasks(self): # Returns the entire stack
+        return self.__tasks
+    
     def get_task(self): # Returns a copy of most priority (LIFO)
         if len(self.__tasks) > 0:
             return self.__tasks.peek()
@@ -150,10 +153,20 @@ class Ship:
             self.__crew['imposters'].append(Imposter())
 
         return
+    
+    def __assign_tasks(self):
+        task_list = self.__tasks
+        for i in range(len(self.__crew['crewmates'])):
+            for _ in range(0, random.randint(3, 6)):
+                random_task = task_list[random.randrange(0, len(task_list))]
+                self.__crew['crewmates'][i].add_task(random_task)
+        return
+
 
     def start_journey(self, imposters):
-        crew = self.__create_crew(imposters)
-        return crew
+        self.__create_crew(imposters)
+        self.__assign_tasks()
+        return self.__crew # Only for testing purpose
  
 
 def parse_file(filename):
@@ -173,8 +186,9 @@ def parse_file(filename):
         print("Could not open or find file:", filename)
 
 def main():
-    parse_file("./tasks_01.csv")
-    ship = Ship([Task('Random1', 'Random1Location')])
+    tasks = parse_file("./tasks_01.csv")
+    ship = Ship(tasks)
+    ship.start_journey()
     return
 
 if __name__ == "__main__":
