@@ -25,7 +25,7 @@ class Droid:
             raise ValueError("Part already exists")
         
     def is_complete(self):
-        for part in PROTO[self.__type]:
+        for part in PARTS[self.__type]:
             if self.needs_part(part):
                 return False
         return True
