@@ -72,15 +72,37 @@ class Crewmate:
     def murder(self): # Kill the crewmate if this function is called.
         self.__murdered = True
 
+class Imposter:
+    __slots__ = ['__location']
+    def __init__(self, location=None):
+        self.__location = location
+
+    def __repr__(self):
+        return "Imposter:"\
+        + "\n location=" + str(self.__location)
+    
+    def __str__(self):
+        return "Imposter"
+
+    def get_location(self):
+        return self.__location
+    
+    def set_location(self, location):
+        self.__location = location
+
 class Ship:
     """
     This class represents the entire ship's available tasks throughout the journey, whereas locations are derived from each tasks
     """
-    __slots__ = ['__tasks', '__locations']
+    __slots__ = ['__tasks', '__locations', '__crew']
 
     def __init__(self, tasks):
         self.__tasks = [task for task in tasks] # Make a copy of new seperate list, rather than referencing to original list
         self.__locations = set()
+        self.__crew = {
+            'crewmates': list(),
+            'imposters': list()
+        }
         for task in self.__tasks:
             self.__locations.add(task.get_location())
     
@@ -92,23 +114,25 @@ class Ship:
         # Returns all of the unique locations in a set
         return self.__locations
     
-    def __inquire_imposters(self):
-        """
-        Helper function to inquire imposters
-        """
-        try:
-            imposter_amt = int(input("Enter number of imposters between 1 to 4: "))
-            if (imposter_amt > 4) or (imposter_amt < 1):
-                raise ValueError()
-            return imposter_amt
-        except ValueError:
-            print("Invalid input")
+    def get_crew(self):
+        return self.__crew
+    
+    # def __inquire_imposters(self):
+    #     """
+    #     Helper function to inquire imposters
+    #     """
+    #     try:
+    #         imposter_amt = int(input("Enter number of imposters between 1 to 4: "))
+    #         if (imposter_amt > 4) or (imposter_amt < 1):
+    #             raise ValueError()
+    #         return imposter_amt
+    #     except ValueError:
+    #         print("Invalid input")
 
     def __create_crew(self, imposters):
         """
         Helper function to create a set of crewmates
         """
-        crew = set() # Initialize a set of crew
         colors = set(CREW_COLORS) # Initialize a set of unique colors available for selection
         count = 0 # Initialize counter variable
         amount_to_create = 10 - imposters
@@ -116,28 +140,21 @@ class Ship:
         while count < amount_to_create:
             random_color = CREW_COLORS[random.randrange(0, len(CREW_COLORS))] # Select a random color
             if random_color in colors: # If selected color is available, go ahead use it
-                crew.add(Crewmate(random_color))
+                self.__crew['crewmates'].append(Crewmate(random_color))
                 colors.remove(random_color) # Once used, remove it from available colors
                 count += 1
             else:
                 continue
+        
+        for _ in range(imposters):
+            self.__crew['imposters'].append(Imposter())
 
-        return crew
-
-    def start_journey(self):
-        while True:
-            imposters = self.__inquire_imposters()
-            # Start game only imposters are provided between 1-4
-            if imposters:
-                crew = self.__create_crew(imposters)
-                print(crew)
-                break
         return
-                
 
-
-
-    
+    def start_journey(self, imposters):
+        crew = self.__create_crew(imposters)
+        return crew
+ 
 
 def parse_file(filename):
     """
@@ -158,7 +175,7 @@ def parse_file(filename):
 def main():
     parse_file("./tasks_01.csv")
     ship = Ship([Task('Random1', 'Random1Location')])
-    ship.start_journey()
+    return
 
 if __name__ == "__main__":
     main()

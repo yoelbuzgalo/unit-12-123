@@ -1,4 +1,4 @@
-from who_goes_there import Task, parse_file, Crewmate, Ship
+from who_goes_there import Task, parse_file, Crewmate, Ship, Imposter
 
 # Task class test
 
@@ -129,3 +129,22 @@ def test_ship():
     assert ship.get_tasks()[1].get_name() == tasks[1].get_name()
     assert tasks[0].get_location() in ship.get_locations()
     assert tasks[1].get_location() in ship.get_locations()
+
+def test_crew_and_imposters():
+    # Setup
+    tasks = [Task('Task_1', 'Task_1_Location'), Task('Task_2', 'Task_2_Location')]
+    ship = Ship(tasks)
+
+    # Invoke
+    ship.start_journey(3)
+    crew = ship.get_crew()
+    crewmates = crew['crewmates']
+    imposters = crew['imposters']
+    expected_crewmate_obj = crewmates[0]
+    expected_imposter_obj = imposters[0]
+
+    # Analysis
+    assert len(crewmates) == 7
+    assert len(imposters) == 3
+    assert type(Crewmate('RandomColor')) == type(expected_crewmate_obj)
+    assert type(Imposter()) == type(expected_imposter_obj)
